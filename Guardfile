@@ -2,9 +2,9 @@
 # More info at https://github.com/guard/guard#readme
 
 # guard 'coffeescript', :input => 'app/assets/javascripts'
-guard 'coffeescript', output: 'spec/javascripts/compiled' do
-  watch(%r{^spec/javascripts/(.*).coffee})
-end
+# guard 'coffeescript', output: 'spec/javascripts/compiled' do
+#   watch(%r{^spec/javascripts/(.*).coffee})
+# end
 
 guard :rspec, cmd: 'spring rspec' do
   watch(%r{^spec/.+_spec\.rb$})
@@ -26,4 +26,3 @@ guard :rspec, cmd: 'spring rspec' do
   watch(%r{^spec/acceptance/(.+)\.feature$})
   watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$})   { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'spec/acceptance' }
 end
-
