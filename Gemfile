@@ -1,47 +1,38 @@
+# -*- coding: utf-8 -*-
 source 'https://rubygems.org'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
-# Use postgresql as the database for Active Record
 gem 'pg'
-
-# Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
-
-# Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-
-# Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
-
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
-
-# Use jquery as the JavaScript library
 gem 'jquery-rails'
-
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
-
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
 group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.1.2'
+group :production do
+  gem 'rails_12factor'
+end
 
-# Use unicorn as the app server
-# gem 'unicorn'
+group :development, :test do
+  gem 'spring'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
 
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
+  # OSXの場合のみ、ファイル変更検知のため（それ以外の環境ではポーリングになる）
+  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
+  gem 'guard-rspec'
+  # app/assets以下はRailsが自動的にコンパイルしてくれるが、テスト用コードは対象外なので、これを入れる
+  gem 'guard-coffeescript'
+  gem 'capybara', git: 'git://github.com/jnicklas/capybara.git'
+end
 
-# Use debugger
-# gem 'debugger', group: [:development, :test]
+
 
 gem 'rails-i18n', '~> 4.0.0'
