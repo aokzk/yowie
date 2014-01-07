@@ -34,4 +34,6 @@ group :development, :test do
   gem 'capybara', git: 'git://github.com/jnicklas/capybara.git'
 #  gem 'pry-rails'
 #  gem 'pry-debugger'
+
+  gem 'dotenv-rails'
 end
