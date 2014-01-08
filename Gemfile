@@ -36,6 +36,7 @@ group :development, :test do
 #  gem 'pry-debugger'
 
   gem 'dotenv-rails'
+  gem 'quiet_assets'
 end
 
 gem 'omniauth-twitter'
