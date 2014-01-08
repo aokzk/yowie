@@ -1,8 +1,9 @@
 Yowie::Application.routes.draw do
-  root 'home#index'
-  get 'home/index'
-  get '/auth/:provider/callback', :to => 'sessions#create'
-  post '/auth/:provider/callback', :to => 'sessions#create'
-  get 'auth/failure', to: redirect('/')
-  get '/logout' => 'sessions#destroy', :as => :logout
+  root 'top#index'
+
+  # For OmniAuth
+  get "/auth/:provider/callback" => "sessions#callback"
+  get "/auth/failure"            => "sessions#failure"
+  get "/logout"                  => "sessions#destroy", as: :logout
+
 end

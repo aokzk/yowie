@@ -14,6 +14,9 @@ Bundler.require(:default, Rails.env)
 
 module Yowie
   class Application < Rails::Application
+    # For Tapp
+    Tapp.config.default_printer = :awesome_print
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

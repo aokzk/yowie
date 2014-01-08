@@ -1,15 +1,25 @@
 class User < ActiveRecord::Base
+  has_many :authentications
 
+  private
 
-  def self.with_omniauth(auth)
-    where(auth.slice("provider", "uid")).first || create_from_omniauth(auth)
-  end
+  # ユーザ作成
+  def self.create_with_auth(authentication)
+    # ユーザ作成
+    user = User.new
+    user.name                = (authentication.nickname.presence || authentication.name)
+    user.image               = authentication.image    if authentication.image.present?
+    user.email               = authentication.email    if authentication.email.present?
+    user.last_login_provider = authentication.provider if authentication.provider.present?
+    user.last_login_at       = Time.now
 
-  def self.create_with_omniauth(auth)
-    create! do |user|
-      user.provider = auth["provider"]
-      user.uid = auth["uid"]
-      user.name = auth["info"]["nickname"]
-    end
+    # データ保存
+    user.save!
+
+    # auth紐付け
+    authentication.user_id = user.id
+    authentication.save!
+
+    return user
   end
 end
