@@ -9,4 +9,5 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Yowie::Application.config.secret_key_base = '2e7d48b421b81cd5d744a65fa51964d527141f3f075704c352c19fe99584366eb891ddbff5a78bbc9ee99f959eeeba3556dd293ca240bda12a7de6615ffd12d0'
+Yowie::Application.config.secret_key_base = ENV['SECRET_TOKEN']
+

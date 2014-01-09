@@ -14,6 +14,9 @@ Bundler.require(:default, Rails.env)
 
 module Yowie
   class Application < Rails::Application
+    # For Tapp
+    Tapp.config.default_printer = :awesome_print
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -25,8 +28,8 @@ module Yowie
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
-
     config.generators do |g|
+      g.test_framework = "rspec"
       g.assets false
       g.helper false
       g.view_specs false
