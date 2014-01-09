@@ -43,3 +43,11 @@ end
 gem 'omniauth-twitter'
 gem 'rails_config'
 gem 'minimum-omniauth-scaffold'
+
+gem 'simple_form', github: 'wtfiwtz/simple_form_bootstrap3'
+gem 'font-awesome-rails'
+
+gem 'bootstrap-sass', '~> 3.0.3.0'
+group :development do
+  gem 'rails_layout'
+end

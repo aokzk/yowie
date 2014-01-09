@@ -1,0 +1,33 @@
+<%# navigation styled for Bootstrap 3.0 %>
+<div class="container">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <%= link_to Settings.app_name, :root, class: 'navbar-brand' %>
+  </div>
+  <nav class="collapse navbar-collapse" role="navigation">
+    <ul class="nav navbar-nav">
+      <%= render 'layouts/navigation_links' %>
+      <li class="dropdown">
+        <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+          <i class="icon-cog"></i>
+          設定
+          <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li>
+            <a href="/my/email/edit">メールアドレス設定</a>
+          </li>
+          <li>
+            <%= link_to "ログアウト", :session, method: :delete, rel: :nofollow %>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <%= render partial: '/layouts/user_icon', locals: { user: current_user, size: "20x18", klass: "img-circle" } %>
+</div>
